@@ -1,0 +1,15 @@
+
+3.2 Transactions
+3.2.1 The system shall allow users to initiate fund transfers between accounts.
+3.2.2 The system shall support internal and external transfers (i.e., transfers between accounts within the bank and transfers to other banks).
+3.2.3 The system shall process transactions in real-time or near-real-time.
+3.2.4 The system shall maintain a transaction queue (Queue data structure) to handle pending or batch transactions.
+3.2.5 The system shall provide notifications (via email/SMS) for successful or failed transactions.
+3.2.6 The system shall implement transaction limits based on account type.
+
+4.1.2 Transactions shall be processed in under 2 seconds, on average, during peak hours.
+
+Transactions: Transaction details, including amount (float), date (Date), and transaction type (String).
+
+Queue<Transaction>: For maintaining a list of pending transactions that need to be processed.
+ArrayList<Transaction>: For storing a list of completed transactions for a given account.
