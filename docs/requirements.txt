@@ -1,0 +1,95 @@
+Banking System Project (Layered Architecture) - Expanded Overview
+This banking system will follow a Layered Architecture, where different layers (Presentation, Business, Data Access, and Persistence) are responsible for handling specific aspects of the application. It will be built using Java and will allow users to manage their bank accounts, conduct transactions, and generate financial reports. Each layer will be designed to handle distinct responsibilities, ensuring scalability, maintainability, and separation of concerns.
+
+Requirements Document for Banking System
+The following requirements document is the outcome of a requirements elicitation process that involved interviews with stakeholders (e.g., bank managers, customers, technical experts), observation, and review of existing systems.
+
+1. Project Overview
+The project aims to develop a Banking System that supports common banking operations, including account management, fund transfers, transaction processing, and financial reporting. The system will follow a Layered Architecture approach to allow scalability, easier maintenance, and clearer separation of concerns.
+2. Stakeholders
+Bank Customers: End-users who will interact with the system to manage their accounts and perform transactions.
+Bank Employees: Administrators who will monitor transactions, manage customer accounts, and generate reports.
+Bank IT Team: Responsible for maintaining the system and ensuring high availability, security, and performance.
+Regulatory Authorities: Government agencies requiring compliance with banking regulations (e.g., AML, KYC).
+
+3. Functional Requirements
+3.1 Account Management
+3.1.1 The system shall allow users to create, view, and close accounts.
+3.1.2 The system shall allow users to view account balances and transaction histories.
+3.1.3 The system shall support different account types: savings, checking, and business accounts.
+3.1.4 The system shall ensure user authentication and authorization through secure login mechanisms (e.g., two-factor authentication).
+3.2 Transactions
+3.2.1 The system shall allow users to initiate fund transfers between accounts.
+3.2.2 The system shall support internal and external transfers (i.e., transfers between accounts within the bank and transfers to other banks).
+3.2.3 The system shall process transactions in real-time or near-real-time.
+3.2.4 The system shall maintain a transaction queue (Queue data structure) to handle pending or batch transactions.
+3.2.5 The system shall provide notifications (via email/SMS) for successful or failed transactions.
+3.2.6 The system shall implement transaction limits based on account type.
+3.3 Reports
+3.3.1 The system shall generate monthly, quarterly, and annual reports summarizing account activities.
+3.3.2 Reports shall include account balances, transaction summaries, and fees charged.
+3.3.3 The system shall allow users to download reports in PDF and CSV formats.
+3.3.4 The system shall allow administrators to generate reports on demand.
+3.4 User Roles & Permissions
+3.4.1 The system shall define user roles: Customer, Bank Employee, and Administrator.
+3.4.2 Customers shall have access to their own accounts and transaction histories.
+3.4.3 Bank Employees shall have access to customer accounts for management purposes.
+3.4.4 Administrators shall have full system access, including auditing and report generation.
+
+4. Non-Functional Requirements
+4.1 Performance
+4.1.1 The system shall handle up to 10,000 concurrent users without degradation in performance.
+4.1.2 Transactions shall be processed in under 2 seconds, on average, during peak hours.
+4.1.3 The system shall ensure that reports are generated within 30 seconds for large datasets.
+4.2 Security
+4.2.1 The system shall ensure data encryption for all sensitive information (e.g., account numbers, transaction details).
+4.2.2 The system shall implement a role-based access control mechanism.
+4.2.3 The system shall support two-factor authentication for all user roles.
+4.2.4 The system shall comply with financial regulations (e.g., PCI-DSS, AML, KYC) and ensure audit trails for all transactions.
+4.3 Availability
+4.3.1 The system shall ensure 99.9% uptime, with planned maintenance windows outside business hours.
+4.3.2 The system shall implement a failover mechanism to ensure continuity in case of system failure.
+4.4 Scalability
+4.4.1 The system shall be scalable to support future growth in terms of both users and transactions.
+4.4.2 The architecture shall allow the addition of new services (e.g., mobile banking) without affecting existing functionality.
+4.5 Usability
+4.5.1 The system shall have an intuitive user interface (UI) that is easy to navigate for both customers and employees.
+4.5.2 The system shall support multi-language options for international users.
+4.5.3 The system shall be accessible through both web and mobile platforms.
+
+5. Data Requirements
+5.1 Data Types
+Accounts: A record for each customer, including account number (integer), balance (float), and account type (String).
+Transactions: Transaction details, including amount (float), date (Date), and transaction type (String).
+Users: User details, including name (String), address (String), and role (String).
+Reports: Structured data for financial reporting, including balances, fees, and summaries (stored in arrays/lists).
+5.2 Data Structures
+HashMap<String, Account>: For fast access to customer account information based on account number.
+Queue<Transaction>: For maintaining a list of pending transactions that need to be processed.
+ArrayList<Transaction>: For storing a list of completed transactions for a given account.
+TreeMap<String, User>: To store user details sorted alphabetically by username.
+LinkedList<Report>: For storing and accessing financial reports in a temporal order.
+
+6. System Architecture
+The system will follow a 4-layered architecture:
+Presentation Layer: User interface (UI) through which customers and employees interact with the system (web and mobile interfaces).
+Business Layer: Contains business logic for account management, transaction processing, and report generation.
+Data Access Layer: Manages database operations, including retrieving, updating, and saving account and transaction data.
+Persistence Layer: The underlying database (SQL/NoSQL) where all account information, transactions, and reports are stored.
+
+7. Constraints
+The system must comply with government regulations (e.g., Anti-Money Laundering, Know Your Customer).
+The system must be implemented in Java and integrated with existing bank services (e.g., payment gateways, SWIFT for international transfers).
+
+8. Risks
+Data Security: Unauthorized access to sensitive financial data could result in financial and reputational damage.
+Regulatory Compliance: Failure to comply with banking regulations could lead to legal penalties.
+Scalability: The system must handle an increase in users and transactions without performance degradation.
+
+9. Acceptance Criteria
+The system must successfully handle account creation, fund transfers, and generate reports.
+It must ensure data security through encryption and two-factor authentication.
+The system must demonstrate high performance by processing transactions in under 2 seconds.
+
+This requirements document covers both the functional and non-functional needs of the banking system, ensuring that the project will address key user stories while maintaining compliance and security.
+
