@@ -1,0 +1,5 @@
+
+Oct 24 2024 ) 
+	1 ) May need to look into create a permissions class or package that is usable for other programs
+		due to the current visibility of the variable.
+	2 ) Creating Accounts class and BankSystem class to leverage Accounts class
