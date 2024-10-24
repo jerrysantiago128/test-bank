@@ -6,7 +6,25 @@
 //
 public class Main extends BankUser{
 	
+	static int NumArgs = 4;
+	
+	public static void printUsage() {
+		System.out.println("Usage: " + "java Main" +  
+				"[first-name] [last-name] [age] [permissions]"	+ "\n" + 
+				"first name: first name of the user " + "\n" + 
+				"last name: last name of the user "+ "\n" + 
+				"age: age of the user "+ "\n" + 
+				"permissions: The permission level of the user ( 1 [Customer], 2 [Employee] , or 3 [ Admininstrator] )");
+	}
+	
 	public static void main(String[] args) {
+		
+		if(args.length < NumArgs ){
+			printUsage();
+			return;
+		}
+		
+		
 		
 		String fname = args[0];
 		String lname = args[1];
