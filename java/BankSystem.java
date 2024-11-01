@@ -23,6 +23,9 @@ public class BankSystem  {
 		else {
 			System.out.println("Account with this number already exists");   //the bank should give out an account number, not the user
 		}
+		
+		
+		//testting testinig
 	}
 	
 	
