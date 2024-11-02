@@ -15,7 +15,7 @@ public class BankUser{
 		user.permission = user.updatePermissions(permission);
 		//System.out.println(permission);
 		permission = getPermissions();
-		System.out.println(permission);	
+		//System.out.println(permission);	
 		user.setString(fname, lname, age, permission);
 		System.out.println("User created: " + user.s);
 	}
@@ -78,7 +78,7 @@ public class BankUser{
 			this.age = age;
 		}
 		
-		public void setString(String fname, String lname, int age, String permission) {
+		public void setString(String fname, String lname, int age, String permission) { // GET RID OF THIS AN USE THE OVVERIDE toString
 			
 			s = fname + " " + lname + " " + age + " " + permission;
 		}
@@ -101,7 +101,7 @@ public class BankUser{
 				System.out.println("Invalid permissions value");
 				break;
 			}
-			System.out.println("Permissions updated to: "+ permission);
+			//System.out.println("Permissions updated to: "+ permission);
 			return permission;
 			
 		}
