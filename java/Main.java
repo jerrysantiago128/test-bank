@@ -7,7 +7,7 @@
 
 import java.util.Scanner;
 
-public class Main extends BankUser{
+public class Main {
 	
 	static int NumArgs = 4;
 	
@@ -45,11 +45,8 @@ public class Main extends BankUser{
 		
 	}*/
 	
-	public static void createBankUser() {
-		
-		Scanner scanner = new Scanner(System.in);
-		
-		BankUser user = new BankUser();
+	public static Object createBankUser(BankUser user, Scanner scanner) {
+	
 		
 		System.out.println("You have selected to create your User Account! \n" + 
 				"\t Please fill out the questions below so we can create your Account \n ");
@@ -68,25 +65,42 @@ public class Main extends BankUser{
 		user.createUser(fname, lname, age, permission);
 		
 		System.out.println("Congragulations! Your user account has been created.");
+		
+		return user;
+	}
+	
+	public static void createBankAccount(BankUser user) {
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		BankSystem account = new BankSystem();
+		
+		
+		
+		
 	}
 	
 	public static void main (String[] args) {
 		
+		Scanner scanner = new Scanner(System.in);
 		
+		BankUser user = new BankUser();
 		
-		String userInput = "q";
+		String userInput = " ";
 		
 		while (userInput != "q") {
 			System.out.println("Welcome to 'SANTIAGO BANK!'. \n" + 
 					"\t What can we assist you with today?");
-			
+			userInput = scanner.nextLine();
 			switch (userInput) {
 			
 			case "1":
-				createBankUser();
+				//BankUser user = new BankUser();
+				createBankUser(user, scanner);
 				break;
-			case "2":
-				createBankAccount();
+			default:
+				//createBankAccount();
+				break;
 			}
 		}
 	}

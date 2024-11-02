@@ -69,18 +69,25 @@ public class BankUser{
 			ADMINISTRATOR
 		}
 		
+		
+		public String getName() {
+			return "fname "  + "lname";
+		}
 		public void setName(String fname, String lname) {
 			this.fname = fname;
 			this.lname = lname;
 		}
 		
+		
+		
 		public void setAge(int age) {
 			this.age = age;
 		}
 		
-		public void setString(String fname, String lname, int age, String permission) { // GET RID OF THIS AN USE THE OVVERIDE toString
+		public String setString(String fname, String lname, int age, String permission) { // GET RID OF THIS AN USE THE OVVERIDE toString
 			
 			s = fname + " " + lname + " " + age + " " + permission;
+			return s;
 		}
 		
 		
