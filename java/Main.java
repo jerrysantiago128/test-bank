@@ -6,44 +6,11 @@
 //
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
 	
-	static int NumArgs = 4;
 	
-	public static void printUsage() {
-		System.out.println("Usage: " + "java Main: " +  
-				"[first-name] [last-name] [age] [permissions]"	+ "\n" + 
-				"\t first name: first name of the user " + "\n" + 
-				"\t last name: last name of the user "+ "\n" + 
-				"\t age: age of the user "+ "\n" + 
-				"\t permissions: The permission level of the user ( 1 [Customer], 2 [Employee] , or 3 [ Admininstrator] )");
-	}
-	
-	
-	//main method with sys args
-	
-	/*public static void main(String[] args) {
-		
-		if(args.length < NumArgs ){
-			printUsage();
-			return;
-		}
-		
-		
-		
-		String fname = args[0];
-		String lname = args[1];
-		String a = args[2];
-		String permission = args[3];
-		
-		int age = Integer.parseInt(a);
-		
-		BankUser user = new BankUser();
-		
-		user.createUser(fname, lname, age, permission); // set this to system arguments 
-		
-	}*/
 	
 	public static Object createBankUser(BankUser user, Scanner scanner) {
 	
@@ -63,6 +30,7 @@ public class Main {
 		String permission = scanner.nextLine();
 		
 		user.createUser(fname, lname, age, permission);
+		user.toString();
 		
 		System.out.println("Congragulations! Your user account has been created.");
 		
@@ -75,8 +43,29 @@ public class Main {
 		
 		BankSystem account = new BankSystem();
 		
+		Random rand = new Random();
+		
+		System.out.println("You have selected to create your bank Account! \n" + 
+				"\t Please fill out the questions below so we can create your Account \n ");
+		
+		//account number
+		String AccountNumber = Integer.toString(rand.nextInt(999999999));
+		System.out.println("AccountNumber: " + AccountNumber);
+		
+		//account holder name
+		String AccountHolderName = user.getName();  //class visibility and usage issue
+		
+		//account type
+		System.out.println("\t What type of account woud you like to open up? \n" + 
+							"\t 'Checking', 'Savings', or 'Busness' \n"); // string
+		String AccountType = scanner.nextLine();
+		
+		//initial deposit
+		System.out.println("\t Welcome " + AccountHolderName + ". How much money will you be putting in for your initial deposit? \n"); // string
+		float initialDeposit = Float.parseFloat(scanner.nextLine());
 		
 		
+		account.createAccount(AccountNumber, AccountHolderName, AccountType, initialDeposit, "$");
 		
 	}
 	
@@ -89,22 +78,31 @@ public class Main {
 		String userInput = " ";
 		
 		while (userInput != "q") {
+			
 			System.out.println("Welcome to 'SANTIAGO BANK!'. \n" + 
 					"\t What can we assist you with today?");
 			userInput = scanner.nextLine();
+			
+			
 			switch (userInput) {
 			
-			case "1":
-				//BankUser user = new BankUser();
-				createBankUser(user, scanner);
-				break;
-			default:
-				//createBankAccount();
-				break;
+				case "1":
+					//BankUser user = new BankUser();
+					createBankUser(user, scanner);
+					break;
+				case "2":		
+					createBankUser(user, scanner);
+					createBankAccount(user);
+					break;
+				case "q":		
+					//createBankAccount();
+					userInput="q";
+					break;
 			}
 		}
-	}
-}
+	}	
+}	
+
 
  
 

@@ -10,13 +10,17 @@
 public class BankUser{
 	private User user;
 	
+	public String getName() {
+		return "fname "  + "lname";
+	}
+	
 	public void createUser(String fname, String lname, int age, String permission) {
 		user = new User(fname, lname, age, permission);  //may see issues with user creation for permissions
 		user.permission = user.updatePermissions(permission);
 		//System.out.println(permission);
 		permission = getPermissions();
 		//System.out.println(permission);	
-		user.setString(fname, lname, age, permission);
+		user.toString(fname, lname, age, permission);
 		System.out.println("User created: " + user.s);
 	}
 	
@@ -24,9 +28,8 @@ public class BankUser{
         if (user != null) { // Check if the user has been created
             user.setName(newFName, newLName);
             user.setAge(newAge);
-            //permission = user.updatePermissions(permission);
             
-            System.out.println("User updated: " + user.s);
+            System.out.println("User updated: " + user.toString());
         } else {
             System.out.println("No user found. Please create a user first.");
         }
@@ -70,9 +73,7 @@ public class BankUser{
 		}
 		
 		
-		public String getName() {
-			return "fname "  + "lname";
-		}
+		
 		public void setName(String fname, String lname) {
 			this.fname = fname;
 			this.lname = lname;
@@ -82,12 +83,6 @@ public class BankUser{
 		
 		public void setAge(int age) {
 			this.age = age;
-		}
-		
-		public String setString(String fname, String lname, int age, String permission) { // GET RID OF THIS AN USE THE OVVERIDE toString
-			
-			s = fname + " " + lname + " " + age + " " + permission;
-			return s;
 		}
 		
 		
@@ -112,10 +107,19 @@ public class BankUser{
 			return permission;
 			
 		}
+		
 		public void setPermissions(String permission) {
 			this.permission = permission;
 		}
 		
+
+		public String toString(String fname,String lname, int age, String permission) {
+			return "User Info{" + 
+					"Name:" + fname + " " + lname + "\n" +
+					"Age: " + age + "\n " + 
+					"Permission: " + permission + "\n" + 
+					"}";
+		}
 	}
 
 
